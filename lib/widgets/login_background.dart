@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LoginBackground extends StatelessWidget {
-  const LoginBackground({super.key});
+
+  const LoginBackground({super.key, required this.child });
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,8 @@ class LoginBackground extends StatelessWidget {
       child: Stack(
         children: [
           _GreenBox(),
-          _HeaderIcon()
+          _HeaderIcon(),
+          this.child
         ],
       ),
     );
