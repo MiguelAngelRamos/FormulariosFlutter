@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
         'login' :(context) => const LoginPageContext(),
         'home' :(context) => const HomePage()
       },
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData.light().copyWith(
+        //* Sacamos una copia y modificamos lo que necesitamos y hacemos estos estilos globales, en este todos los scaffold van tener este color
+        scaffoldBackgroundColor: Colors.grey[300]
+      )
     );
   }
 }
