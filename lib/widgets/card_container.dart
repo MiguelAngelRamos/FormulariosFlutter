@@ -5,10 +5,14 @@ class CardContainer extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: _createCardShape(),
-      child: this.child,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(20),
+        decoration: _createCardShape(),
+        child: this.child,
+      ),
     );
   }
 
