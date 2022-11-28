@@ -74,7 +74,7 @@ class _LoginForm extends StatelessWidget {
               ),
               validator: (value) {
                 value = value?.replaceAll(' ', '');
-                return (value != null && value.length >= 6) ? null: 'La contraseña debe ser de 6 caracteres';
+                return (value != null && value.length >= 6) ? null: 'La contraseña debe ser de minimo 6 caracteres';
               }
             ),
             const SizedBox(height: 30),
