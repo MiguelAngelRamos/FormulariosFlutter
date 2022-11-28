@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:formularioapp/ui/styledecorations_input.dart';
 import 'package:formularioapp/widgets/card_container.dart';
 import 'package:formularioapp/widgets/widgets.dart';
 
@@ -25,8 +25,10 @@ class LoginPageContext extends StatelessWidget {
                     _LoginForm()
                   ]
                 ),
-              )
-          
+              ),
+              const SizedBox(height: 50),
+              const Text('Crear una nueva cuenta', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 50),
             ],
           ),
         ),
@@ -44,11 +46,16 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Form(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+        autovalidateMode: AutovalidateMode.onUserInteraction, //* valida a medida que el usuario va escribiendo
         child: Column(
           children: [
             TextFormField(
               keyboardType: TextInputType.emailAddress,
+              decoration: StyleDecorationsInput.loginInputDecoration(
+                hintextArgs: 'example@correo.com',
+                labelTextArgs: 'Correo electronico',
+                prefixIconArgs: Icons.alternate_email_rounded
+              ),
               validator: (value) {
                 String pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
@@ -58,7 +65,9 @@ class _LoginForm extends StatelessWidget {
                 return regExp.hasMatch(value ?? '') ? null: 'Lo ingresado no es correo electronico';
               },
             ),
-            TextFormField(),
+            TextFormField(
+
+            ),
           ],
         ),
       ),
