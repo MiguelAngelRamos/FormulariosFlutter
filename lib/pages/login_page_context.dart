@@ -66,8 +66,26 @@ class _LoginForm extends StatelessWidget {
               },
             ),
             TextFormField(
-
+              obscureText: true,
+              decoration: StyleDecorationsInput.loginInputDecoration(
+                hintextArgs: "********", 
+                labelTextArgs: "Contraseña",
+                prefixIconArgs: Icons.lock_outline
+              ),
+              validator: (value) {
+                value = value?.replaceAll(' ', '');
+                return (value != null && value.length >= 6) ? null: 'La contraseña debe ser de 6 caracteres';
+              }
             ),
+            const SizedBox(height: 30),
+            MaterialButton(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              color: Colors.green,
+              onPressed: (){},
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                child: const Text('Ingresar', style: TextStyle(color: Colors.white)))
+            )
           ],
         ),
       ),
