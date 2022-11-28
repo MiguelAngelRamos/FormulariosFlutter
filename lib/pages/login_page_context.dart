@@ -78,17 +78,30 @@ class _LoginForm extends StatelessWidget {
               }
             ),
             const SizedBox(height: 30),
-            MaterialButton(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-              color: Colors.green,
-              onPressed: (){},
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                child: const Text('Ingresar', style: TextStyle(color: Colors.white)))
+            Builder(
+              builder: (context) {
+                return  MaterialButton(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  color: Colors.green,
+                  onPressed: () => _submit(context),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                    child: const Text('Ingresar', style: TextStyle(color: Colors.white)))
+              );
+              },
             )
+
           ],
         ),
       ),
     );
+  } // builder
+  void _submit(BuildContext context) {
+    // final formState = context.findAncestorStateOfType<FormState>();
+    final formState = Form.of(context);
+    if(formState!.validate()) {
+      print('Formulario completamente válido');
+      //* LLAMAR AL BACKEND PASARLE LA INFORMACION 
+    }
   }
 }
