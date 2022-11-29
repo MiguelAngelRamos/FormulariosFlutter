@@ -5,8 +5,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("HomePage"),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Productos')),
+      body: const Center(child: Text('Bienvenido al Sistema', style: TextStyle(fontSize: 20),))
     );
   }
 }

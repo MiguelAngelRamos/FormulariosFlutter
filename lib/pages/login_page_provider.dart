@@ -96,6 +96,7 @@ class _LoginForm extends StatelessWidget {
                     print(loginForm.isValidForm());
                     if(!loginForm.isValidForm()) return;
                     print('formulario completamente valido, uso de provider');
+                    Navigator.pushReplacementNamed(context, 'home');
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
