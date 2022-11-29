@@ -54,6 +54,7 @@ class _LoginForm extends StatelessWidget {
     // loginForm.isValidForm();
     return Container(
       child: Form(
+        key: loginForm.formKey, //! teniamos que utilizar la llave para que detecte  lo detecte el global key
         autovalidateMode: AutovalidateMode.onUserInteraction, //* valida a medida que el usuario va escribiendo
         child: Column(
           children: [
