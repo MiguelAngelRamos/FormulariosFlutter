@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: 'login',
       routes: {
-        'login' :(context) => const LoginPageContext(),
+        // 'login' :(context) => const LoginPageContext(),
+        'login' :(context) => const LoginPageProvider(),
         'home' :(context) => const HomePage()
       },
       theme: ThemeData.light().copyWith(

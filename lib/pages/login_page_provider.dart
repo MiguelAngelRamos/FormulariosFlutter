@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:formularioapp/provider/login_form_provider.dart';
 import 'package:formularioapp/ui/styledecorations_input.dart';
 import 'package:formularioapp/widgets/card_container.dart';
 import 'package:formularioapp/widgets/widgets.dart';
@@ -23,7 +24,11 @@ class LoginPageProvider extends StatelessWidget {
                     Text('Login', style: Theme.of(context).textTheme.headline4),
                     const SizedBox(height: 30),
                     //* formulario
-                    _LoginForm()
+                    ChangeNotifierProvider(
+                      create: (_) => LoginFormProvider(),
+                      child: _LoginForm() //* solo el _LoginForm va tener acceso al provider LoginFormProvider
+                    )
+                    
                   ]
                 ),
               ),
@@ -41,10 +46,12 @@ class LoginPageProvider extends StatelessWidget {
 //* Una clase para el formulario Statelesswidget
 
 class _LoginForm extends StatelessWidget {
-  const _LoginForm({super.key});
-
+  // const _LoginForm({super.key});
+ 
   @override
   Widget build(BuildContext context) {
+    final loginForm = Provider.of<LoginFormProvider>(context);
+    // loginForm.isValidForm();
     return Container(
       child: Form(
         autovalidateMode: AutovalidateMode.onUserInteraction, //* valida a medida que el usuario va escribiendo
@@ -82,7 +89,11 @@ class _LoginForm extends StatelessWidget {
             MaterialButton(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   color: Colors.green,
-                  onPressed: () {},
+                  onPressed: () {
+                    print(loginForm.isValidForm());
+                    // if(!loginForm.isValidForm()) return;
+                    // print('formulario completamente valido');
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                     child: const Text('Ingresar', style: TextStyle(color: Colors.white)))
