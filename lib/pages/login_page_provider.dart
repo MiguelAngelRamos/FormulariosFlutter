@@ -54,12 +54,13 @@ class _LoginForm extends StatelessWidget {
     // loginForm.isValidForm();
     return Container(
       child: Form(
-        key: loginForm.formKey, //! teniamos que utilizar la llave para que detecte  lo detecte el global key
+        key: loginForm.formKey, //! teniamos que utilizar la llave para que detecte  lo detecte el GlobalKey
         autovalidateMode: AutovalidateMode.onUserInteraction, //* valida a medida que el usuario va escribiendo
         child: Column(
           children: [
             TextFormField(
               keyboardType: TextInputType.emailAddress,
+              onChanged: (value) => loginForm.email = value,
               decoration: StyleDecorationsInput.loginInputDecoration(
                 hintextArgs: 'example@correo.com',
                 labelTextArgs: 'Correo electronico',
@@ -76,6 +77,7 @@ class _LoginForm extends StatelessWidget {
             ),
             TextFormField(
               obscureText: true,
+               onChanged: (value) => loginForm.password = value,
               decoration: StyleDecorationsInput.loginInputDecoration(
                 hintextArgs: "********", 
                 labelTextArgs: "Contraseña",
@@ -92,8 +94,8 @@ class _LoginForm extends StatelessWidget {
                   color: Colors.green,
                   onPressed: () {
                     print(loginForm.isValidForm());
-                    // if(!loginForm.isValidForm()) return;
-                    // print('formulario completamente valido');
+                    if(!loginForm.isValidForm()) return;
+                    print('formulario completamente valido, uso de provider');
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
